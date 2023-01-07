@@ -22,10 +22,12 @@ export default function App({ Component, pageProps }) {
         }
         html {
           font-size: 10px;
-          font-family: ${pjsans.style.fontFamily};
+          --charleston-green: #222629;
+          --silver-sand: #c4c8c8;
         }
         body {
           font-size: 1.6rem;
+          font-family: ${pjsans.style.fontFamily};
         }
         img {
           width: 100%;
@@ -35,6 +37,9 @@ export default function App({ Component, pageProps }) {
         }
         h1 {
           font-weight: 700;
+        }
+        button {
+          font-family: ${pjsans.style.fontFamily};
         }
         p {
           font-weight: 500;
