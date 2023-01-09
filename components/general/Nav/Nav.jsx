@@ -1,4 +1,4 @@
-import StyledNav from "./Nav.styled"
+import StyledNav, { StyledLogo } from "./Nav.styled"
 import Link from "next/link";
 import { Button } from "../Reusable/Button";
 import { Burger } from "../Reusable/Burger";
@@ -13,13 +13,17 @@ export const Nav = () => {
     }, [])
     return (
         <StyledNav isClosed={isClosed}>
+            <StyledLogo isClosed={isClosed} secondary >
+                <div></div>
+                <div></div>
+            </StyledLogo>
             <ul style={{ display: `${isClosed ? 'flex' : 'none'}` }}>
                 <li>
                     <Link href='/'>
-                        <div>
+                        <StyledLogo>
                             <div></div>
                             <div></div>
-                        </div>
+                        </StyledLogo>
                     </Link>
                 </li>
                 <li><Link href='/dashboard'>Benefits</Link></li>
