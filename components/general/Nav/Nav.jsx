@@ -1,11 +1,11 @@
-import StyledNav, { StyledLogo } from "./Nav.styled"
+import StyledNav from "./Nav.styled"
 import Link from "next/link";
-import { Button } from "../Reusable/Button";
-import { Burger } from "../Reusable/Burger";
+import { Button, Burger, Logo } from "../Reusable";
 import { useState, useEffect } from "react";
 
 export const Nav = () => {
     const [isClosed, setIsClosed] = useState(false)
+
     useEffect(() => {
         if (window.innerWidth > 480) {
             setIsClosed(true)
@@ -13,17 +13,17 @@ export const Nav = () => {
     }, [])
     return (
         <StyledNav isClosed={isClosed}>
-            <StyledLogo isClosed={isClosed} secondary >
+            <Logo isClosed={isClosed} secondary >
                 <div></div>
                 <div></div>
-            </StyledLogo>
+            </Logo>
             <ul style={{ display: `${isClosed ? 'flex' : 'none'}` }}>
                 <li>
                     <Link href='/'>
-                        <StyledLogo>
+                        <Logo>
                             <div></div>
                             <div></div>
-                        </StyledLogo>
+                        </Logo>
                     </Link>
                 </li>
                 <li><Link href='/dashboard'>Benefits</Link></li>
