@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }) {
           text-decoration: none;
         }
         html {
-          font-size: 10px;
+          font-size: 0.625em;
           --charleston-green: #222629;
           --silver-sand: #c4c8c8;
         }
