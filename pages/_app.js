@@ -1,5 +1,4 @@
 import { Plus_Jakarta_Sans as Pjsans } from "@next/font/google";
-import { Nav } from "../components/general";
 
 const pjsans = Pjsans({ subsets: ["latin"] });
 
@@ -46,7 +45,6 @@ export default function App({ Component, pageProps }) {
           font-weight: 500;
         }
       `}</style>
-      <Nav />
       <Component {...pageProps} />
     </>
   );
