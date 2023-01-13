@@ -32,6 +32,8 @@ export default function App({ Component, pageProps }) {
           background-color: #121128;
           color: #fff;
           padding: 1rem;
+          display: grid;
+          grid-template: 100% / 6rem calc(100% - 6rem);
         }
         img {
           width: 100%;
