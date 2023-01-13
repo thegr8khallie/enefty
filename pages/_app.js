@@ -28,6 +28,8 @@ export default function App({ Component, pageProps }) {
           font-size: 1.6rem;
           font-family: ${pjsans.style.fontFamily};
           overflow-x: hidden;
+          background-color: #121128;
+          color: #fff;
         }
         img {
           width: 100%;
