@@ -1,4 +1,5 @@
 import { Plus_Jakarta_Sans as Pjsans } from "@next/font/google";
+import { Sidebar } from "../reuseables";
 
 const pjsans = Pjsans({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function App({ Component, pageProps }) {
           overflow-x: hidden;
           background-color: #121128;
           color: #fff;
+          padding: 1rem;
         }
         img {
           width: 100%;
@@ -47,6 +49,7 @@ export default function App({ Component, pageProps }) {
           font-weight: 500;
         }
       `}</style>
+      <Sidebar />
       <Component {...pageProps} />
     </>
   );
