@@ -1,12 +1,15 @@
 import StyledLayout from "./layout.styled"
-import { Sidebar } from '../../reuseables'
+import { Navbar, Sidebar } from '../../reuseables'
 
 export const Layout = ({ children }) => {
 
     return (
         <StyledLayout>
             <Sidebar />
-            <section>{children}</section>
+            <section>
+                <Navbar />
+                {children}
+            </section>
         </StyledLayout>
     )
 }

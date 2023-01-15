@@ -43,6 +43,7 @@ export default function App({ Component, pageProps }) {
         }
         button {
           font-family: ${pjsans.style.fontFamily};
+          font-size: 1.6rem;
         }
         p {
           font-weight: 500;
