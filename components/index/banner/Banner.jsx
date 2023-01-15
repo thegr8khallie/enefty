@@ -18,7 +18,6 @@ export const Banner = () => {
                     <button>How to use</button>
                 </div>
             </section>
-
         </StyledBanner>
     )
 }
