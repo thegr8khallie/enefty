@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Banner } from "../components";
 
 export default function Home() {
   return (
@@ -9,15 +10,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section
-        style={homeStyle}>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium rerum ad ratione nesciunt cupiditate, in consequuntur eveniet nihil ipsum, ut veritatis ab voluptatibus fuga veniam possimus accusamus. Sed aut rem non atque voluptatibus minus iste quo suscipit autem aliquid, hic ea possimus, similique animi sit. Cupiditate vel quibusdam dolor commodi.
-      </section>
+      <Banner />
     </>
   );
-}
-var homeStyle = {
-  // gridRow: '1 / 2', 
-  // gridColumn: '2 / 3', 
-  backgroundColor: 'red'
 }
