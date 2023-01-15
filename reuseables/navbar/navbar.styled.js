@@ -8,7 +8,7 @@ const StyledNav = styled.nav`
     margin-left: auto;
     button {
       padding: 1rem;
-      background-color: pink;
+      background-color: purple;
     }
   }
 `;
