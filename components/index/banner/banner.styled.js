@@ -43,10 +43,8 @@ const StyledBanner = styled.section`
     position: absolute;
     top: 2rem;
     left: 2rem;
-    max-width: 30%;
     color: blanchedalmond;
     font-size: 7rem;
-    /* backdrop-filter: blur(5px); */
   }
   div {
     position: absolute;
