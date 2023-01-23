@@ -17,6 +17,9 @@ const StyledForm = styled.form`
       border: 0.1rem solid #84caff;
       box-shadow: 0.1rem 0.2rem #1018280d, 0 0 0 0.4rem #d1e9ff;
     }
+    &[type="submit"] {
+      background-color: #9788ee;
+    }
   }
   label {
     font-size: 2rem;
