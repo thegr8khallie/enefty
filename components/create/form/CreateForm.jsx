@@ -86,8 +86,9 @@ export const CreateForm = () => {
         const response = await algodClient.sendRawTransaction(rawSignedTxn.blob).do();
         let assetID = null;
         // Get the new asset's information from the creator account
-        let ptx = await algodClient.pendingTransactionInformation(response.txId).do();
+        let ptx = await algosdk.waitForConfirmation(algodClient, response.txId, 4)
         assetID = ptx["asset-index"];
+        // console.log("Transaction " + tx.txId + " confirmed in round " + ptx["confirmed-round"]);
         // return assetID;
         alert(`Asset: ${assetID} has been created`)
     }
