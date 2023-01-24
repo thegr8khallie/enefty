@@ -1,21 +1,39 @@
 import StyledForm from './createForm.styled'
 import { useState } from 'react';
+import algosdk from 'algosdk';
+import { NFTStorage, Blob } from 'nft.storage';
 
 export const CreateForm = () => {
     const [name, setName] = useState('');
-    const [media, setMedia] = useState();
+    const [media, setMedia] = useState(null);
     const [unitName, setUnitName] = useState('');
     const [description, setDescription] = useState('');
     const [url, setUrl] = useState('');
 
     const handleChange = (e) => {
         if (e.target.files) {
-            setMedia(e.target.files[0])
+            const data = e.target.files[0]
+            const reader = new window.FileReader();
+            reader.readAsArrayBuffer(data);
+            reader.onloadend = () => {
+                setMedia(Buffer(reader.result))
+            }
+            e.preventDefault();
         }
     }
 
+    async function handleIPFSUpload(e) {
+        e.preventDefault();
+        const endpoint = "https://api.nft.storage";
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDdCNTFENGNjYzg5RGE4M0NGNjZlZjU5NjBBMjM5NTM1RWY1YmM1MDMiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2NjU1OTMwODcxNywibmFtZSI6ImhpZEFsZ29ORlRTIn0.jdiVjeCn647Rzgd60DUrQgL3aqe2hp2ezwWOQM00NOo'
+        const storage = new NFTStorage({ endpoint, token });
+        const cid = await storage.storeBlob(new Blob([media]));
+        let ipfs = `ipfs://${cid}`
+        return ipfs;
+    }
+
     return (
-        <StyledForm>
+        <StyledForm onSubmit={handleIPFSUpload}>
             <h1
                 style={{ fontSize: '3rem', marginBottom: '2rem' }}>
                 Mint NFTS the easy way</h1>
