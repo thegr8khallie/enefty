@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^13.1.1",
+    "@randlabs/myalgo-connect": "^1.4.2",
     "algosdk": "^2.0.0",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
