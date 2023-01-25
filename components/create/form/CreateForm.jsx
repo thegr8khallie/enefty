@@ -91,6 +91,12 @@ export const CreateForm = () => {
         // console.log("Transaction " + tx.txId + " confirmed in round " + ptx["confirmed-round"]);
         // return assetID;
         alert(`Asset: ${assetID} has been created`)
+        setName('')
+        setMedia(null)
+        setFile(null)
+        setUnitName('')
+        setDescription('')
+        setUrl('')
     }
 
     return (
