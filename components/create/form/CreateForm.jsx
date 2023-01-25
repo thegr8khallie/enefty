@@ -88,8 +88,6 @@ export const CreateForm = () => {
         // Get the new asset's information from the creator account
         let ptx = await algosdk.waitForConfirmation(algodClient, response.txId, 4)
         assetID = ptx["asset-index"];
-        // console.log("Transaction " + tx.txId + " confirmed in round " + ptx["confirmed-round"]);
-        // return assetID;
         alert(`Asset: ${assetID} has been created`)
         setName('')
         setMedia(null)
