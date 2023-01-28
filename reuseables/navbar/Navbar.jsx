@@ -21,11 +21,15 @@ export const Navbar = () => {
             console.error(error)
         }
     }
+
+    const handleWalletDisconnect = () => {
+        localStorage.removeItem('address');
+    }
     return (
         <StyledNav>
             <div>
                 {addr !== "" && <div><span>{addr}</span></div>}
-                <button onClick={handleWalletConnect}>{addr === "" ? "Connect myAlgo Wallet" : 'Disconnect'}</button>
+                <button onClick={addr === "" ? handleWalletConnect : handleWalletDisconnect}>{addr === "" ? "Connect myAlgo Wallet" : 'Disconnect'}</button>
             </div>
         </StyledNav>
     )

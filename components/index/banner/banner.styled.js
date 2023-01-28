@@ -64,6 +64,11 @@ const StyledBanner = styled.section`
       }
     }
   }
+  @media only screen and (max-width: 450px) {
+    h1 {
+      font-size: 4.5rem;
+    }
+  }
 `;
 
 export default StyledBanner;

@@ -8,7 +8,7 @@ const StyledForm = styled.form`
     margin-bottom: 2rem;
   }
   input {
-    width: 100vw;
+    width: 100%;
     max-width: 50rem;
     padding: 1rem;
     border: 1px solid;

@@ -1,16 +1,37 @@
 import Link from "next/link"
 import StyledSidebar from "./sidebar.styled"
+import { FaHome, FaPlus, FaCog, FaDatabase, FaBook } from 'react-icons/fa'
+
 
 export const Sidebar = () => {
     const navElements = [
         {
-            to: '/create',
-            icon: 'CR'
+            to: '/',
+            text: 'Home',
+            icon: FaHome
+
         },
         {
-            to: '/',
-            icon: 'HO'
+            to: '/create',
+            text: 'Create',
+            icon: FaPlus
+        },
+        {
+            to: '/modify',
+            text: 'Modify',
+            icon: FaCog
+        },
+        {
+            to: '/nfts',
+            text: 'NFT Archive',
+            icon: FaDatabase
+        },
+        {
+            to: '/docs',
+            text: 'How to Use',
+            icon: FaBook
         }
+
     ]
     return (
         <StyledSidebar>
@@ -18,11 +39,10 @@ export const Sidebar = () => {
                 <li>
                     <img src="./favicon.ico" alt="Logo" />
                 </li>
-                <hr />
                 {navElements.map((i, j) => (
                     <li key={`element${j}`}>
                         <Link href={i.to}>
-                            {i.icon}
+                            {<i.icon />}
                         </Link>
                     </li>
                 ))}

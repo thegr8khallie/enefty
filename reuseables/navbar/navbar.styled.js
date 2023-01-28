@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
     display: flex;
     gap: 2rem;
     > div {
-      width: 15rem;
+      width: 12rem;
       padding: 1rem;
       background-color: #111;
       overflow: hidden;
