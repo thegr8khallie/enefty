@@ -24,6 +24,7 @@ export const Navbar = () => {
 
     const handleWalletDisconnect = () => {
         localStorage.removeItem('address');
+        setAddr('')
     }
     return (
         <StyledNav>

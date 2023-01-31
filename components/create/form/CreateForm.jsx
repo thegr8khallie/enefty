@@ -3,6 +3,7 @@ import { useState } from 'react';
 import algosdk from 'algosdk';
 import { NFTStorage, Blob } from 'nft.storage';
 import MyAlgoConnect from '@randlabs/myalgo-connect';
+import { useAsync } from '../../../hooks'
 
 export const CreateForm = () => {
     const [name, setName] = useState('');
@@ -97,6 +98,8 @@ export const CreateForm = () => {
         setUrl('')
     }
 
+    //useAsync
+    const { execute, status, value, error } = useAsync(handleNftMint, false)
     return (
         <StyledForm onSubmit={handleNftMint}>
             <h1
