@@ -22,6 +22,8 @@ z-index: 10;
   left: 50%;
   translate: -50% -50%;
   padding: 4.8rem 4rem;
+  width: 60vw;
+  height: 30vh;
   background-color: #37353b;
   color: #f9f9f9;
   opacity: ${({ isModalOpen }) => (isModalOpen ? '1' : '0')};
@@ -47,15 +49,15 @@ z-index: 10;
   }
 `
 
-const Modal = ({ isModalOpen, toggleModal }) => {
+const Modal = ({ isModalOpen, toggleIsModalOpen }) => {
   return (
-    <StyledModal isModalOpen={isModalOpen} onClick={toggleModal}>
+    <StyledModal isModalOpen={isModalOpen}>
       <div className="modal">
         <Loader />
         <h3>
           Hello
         </h3>
-        <button onClick={toggleModal} type='button' style={{ padding: '1rem' }}>Okay</button>
+        <button onClick={toggleIsModalOpen}>Close</button>
       </div>
     </StyledModal>
   )

@@ -17,7 +17,7 @@ export default function Nfts() {
                 <button onClick={toggleIsModalOpen} type="button">Open Modal</button>
                 <Modal
                     isModalOpen={isModalOpen}
-                    toggleModal={toggleIsModalOpen} />
+                    toggleIsModalOpen={toggleIsModalOpen} />
             </div>
         </>
     );
