@@ -11,9 +11,9 @@ height: 100vh;
 display: grid;
 place-items: center;
 background-color: rgba(0,0,0,0.5);
-opacity: ${({ isModalOpen }) => isModalOpen ? '1' : '0'};
-visibility: ${({ isModalOpen }) => isModalOpen ? 'visible' : 'hidden'};
-animation: ${({ isModalOpen }) => isModalOpen && 'background-in 1s both'};
+opacity: ${({ isModalOpen }) => (isModalOpen ? '1' : '0')};
+visibility: ${({ isModalOpen }) => (isModalOpen ? 'visible' : 'hidden')};
+animation: ${({ isModalOpen }) => (isModalOpen && 'background-in 1s both')};
 transition: .5s;
 z-index: 10;
 .modal {
@@ -24,10 +24,10 @@ z-index: 10;
   padding: 4.8rem 4rem;
   background-color: #37353b;
   color: #f9f9f9;
-  opacity: ${({ isModalOpen }) => isModalOpen ? '1' : '0'};
-visibility: ${({ isModalOpen }) => isModalOpen ? 'visible' : 'hidden'};
-animation: ${({ isModalOpen }) => isModalOpen && 'modal-in 1s'};
-  transition: 0.5s;
+  opacity: ${({ isModalOpen }) => (isModalOpen ? '1' : '0')};
+  visibility: ${({ isModalOpen }) => (isModalOpen ? 'visible' : 'hidden')};
+  animation: ${({ isModalOpen }) => (isModalOpen && 'modal-in 1s')};
+  opacity: 1;
 }
   @keyframes background-in {
     0% {scale: 0 0.005;}
@@ -55,10 +55,11 @@ const Modal = ({ isModalOpen, toggleModal }) => {
         <h3>
           Hello
         </h3>
-        <button onClick={toggleModal}>Okay</button>
+        <button onClick={toggleModal} type='button' style={{ padding: '1rem' }}>Okay</button>
       </div>
     </StyledModal>
   )
+  // }
 }
 
 export default Modal

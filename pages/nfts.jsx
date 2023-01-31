@@ -3,7 +3,7 @@ import Modal from '../utils/Modal';
 import { useToggle } from '../hooks'
 
 export default function Nfts() {
-    const [ismodalOpen, toggleIsModalOpen] = useToggle();
+    const [isModalOpen, toggleIsModalOpen] = useToggle();
 
     return (
         <>
@@ -16,7 +16,7 @@ export default function Nfts() {
             <div>
                 <button onClick={toggleIsModalOpen} type="button">Open Modal</button>
                 <Modal
-                    ismodalOpen={ismodalOpen}
+                    isModalOpen={isModalOpen}
                     toggleModal={toggleIsModalOpen} />
             </div>
         </>
