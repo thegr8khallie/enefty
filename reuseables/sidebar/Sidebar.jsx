@@ -43,6 +43,7 @@ export const Sidebar = () => {
                     <li key={`element${j}`}>
                         <Link href={i.to}>
                             {<i.icon />}
+                            <p style={{ fontSize: '1rem' }}>{i.text}</p>
                         </Link>
                     </li>
                 ))}
