@@ -107,10 +107,10 @@ export const CreateForm = () => {
                 Mint NFTS the easy way</h1>
             {/* Name */}
             <label htmlFor="nft-name">Name of NFT</label>
-            <input type="text" id="nft-name" placeholder='Ex: SMC #1' value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" id="nft-name" placeholder='Ex: SMC #1' value={name} onChange={(e) => setName(e.target.value)} required={true} />
             {/* Media */}
             <label htmlFor="media">Media</label>
-            <input type="file" id="media" onChange={handleChange} />
+            <input type="file" id="media" onChange={handleChange} required={true} />
             {/* Unit-name */}
             <label htmlFor="unit-name">Unit Name</label>
             <input type="text" id="unit-name" placeholder='(Optional) Ex: SMC#001' value={unit_Name} onChange={(e) => setUnitName(e.target.value)} />

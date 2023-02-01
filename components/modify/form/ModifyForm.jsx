@@ -63,7 +63,7 @@ export const ModifyForm = () => {
         <StyledModifyForm onSubmit={handleNftEdit}>
             <h1>Modify Your already existing NFTs</h1>
             <label htmlFor="assetID">AssetID</label>
-            <input type="number" id="assetID" placeholder="Enter AssetID" value={assetID} onChange={(e) => setAssetID(e.target.value)} />
+            <input type="number" id="assetID" placeholder="Enter AssetID" value={assetID} onChange={(e) => setAssetID(e.target.value)} required={true} />
             <label htmlFor="description">Description</label>
             <input type="text" id="description" placeholder="Edit Asset description" value={description} onChange={(e) => setDescription(e.target.value)} />
             <label htmlFor="url">External URL</label>
