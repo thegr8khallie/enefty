@@ -1,6 +1,6 @@
 import Link from "next/link"
 import StyledSidebar from "./sidebar.styled"
-import { FaHome, FaPlus, FaCog, FaDatabase, FaBook } from 'react-icons/fa'
+import { HiOutlineHome, HiOutlineDocumentAdd, HiOutlineAdjustments, HiOutlineArchive, HiOutlineBookOpen } from 'react-icons/hi'
 
 
 export const Sidebar = () => {
@@ -8,28 +8,28 @@ export const Sidebar = () => {
         {
             to: '/',
             text: 'Home',
-            icon: FaHome
+            icon: HiOutlineHome
 
         },
         {
             to: '/create',
             text: 'Create',
-            icon: FaPlus
+            icon: HiOutlineDocumentAdd
         },
         {
             to: '/modify',
             text: 'Modify',
-            icon: FaCog
+            icon: HiOutlineAdjustments
         },
         {
             to: '/nfts',
             text: 'NFT Archive',
-            icon: FaDatabase
+            icon: HiOutlineArchive
         },
         {
             to: '/docs',
             text: 'How to Use',
-            icon: FaBook
+            icon: HiOutlineBookOpen
         }
 
     ]

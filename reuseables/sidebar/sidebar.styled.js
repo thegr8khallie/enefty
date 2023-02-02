@@ -17,6 +17,11 @@ const StyledSidebar = styled.nav`
     &:not(:first-child):hover {
       background-color: #121128;
     }
+    a,
+    a:active,
+    a:visited {
+      color: #f9f9f9;
+    }
   }
 `;
 
