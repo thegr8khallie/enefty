@@ -157,7 +157,7 @@ export const CreateForm = () => {
                                 <input type="submit" value="Mint" disabled={name === '' || file === null || status === "pending"} />
                             </StyledForm>
                             <Modal
-                                icon={status === "pending" ? (<Loader />) : status === 'success' ? (<HiOutlineCheckCircle />) : status === 'error' ? (<HiOutlineXCircle />) : null}
+                                icon={status === "pending" ? (<Loader />) : status === 'success' ? (<HiOutlineCheckCircle style={{ color: 'greenyellow' }} />) : status === 'error' ? (<HiOutlineXCircle style={{ color: 'red' }} />) : null}
                                 tx={txnResponse.txID}
                                 status={status}
                                 isModalOpen={isModalOpen}
