@@ -82,7 +82,7 @@ const Modal = ({ isModalOpen, toggleIsModalOpen, children, icon, tx, status }) =
     <StyledModal isModalOpen={isModalOpen}>
       <div className="modal">
         <div className="info-container">
-          <div>
+          <div style={{ fontSize: '2rem' }}>
             {icon}
           </div>
           <h3>
