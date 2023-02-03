@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Loader from "./Loader"
+import Loader from './Loader'
 
 const StyledModal = styled.div`
 position: fixed;
@@ -21,8 +21,9 @@ z-index: 10;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  padding: 4.8rem 4rem;
-  width: 60vw;
+  padding: 4rem;
+  width: 90vw;
+  max-width: 70rem;
   height: 30vh;
   background-color: #37353b;
   color: #f9f9f9;
@@ -30,6 +31,33 @@ z-index: 10;
   visibility: ${({ isModalOpen }) => (isModalOpen ? 'visible' : 'hidden')};
   animation: ${({ isModalOpen }) => (isModalOpen && 'modal-in 1s')};
   opacity: 1;
+  .info-container {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+  }
+  .button-container {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    margin-top: 20%;
+    a {
+      flex-basis: 50%;
+    }
+    button {
+      padding: 1rem;
+      flex-basis: 50%;
+      color: white;
+      border: none;
+      &.see {
+        background-color: #3f48cc;
+        width: 100%;
+      }
+      &.close {
+        background-color: red;
+      }
+    }
+  }
 }
   @keyframes background-in {
     0% {scale: 0 0.005;}
@@ -49,19 +77,37 @@ z-index: 10;
   }
 `
 
-const Modal = ({ isModalOpen, toggleIsModalOpen }) => {
+const Modal = ({ isModalOpen, toggleIsModalOpen, children, icon, tx, status }) => {
   return (
     <StyledModal isModalOpen={isModalOpen}>
       <div className="modal">
-        <Loader />
-        <h3>
-          Hello
-        </h3>
-        <button onClick={toggleIsModalOpen}>Close</button>
+        <div className="info-container">
+          <div>
+            {icon}
+          </div>
+          <h3>
+            {children}
+          </h3>
+        </div>
+        {
+          status === 'success' ?
+            (
+              <div className="button-container">
+                <a href={`https://testnet.algoexplorer.io/tx/${tx}`} target="_blank" rel="noopener noreferrer">
+                  <button className="see">See transaction</button>
+                </a>
+                <button className="close" onClick={toggleIsModalOpen}>Close</button>
+              </div>
+            ) : status === 'error' ?
+              (
+                <div className="button-container" style={{ justifySelf: 'flex-end' }}>
+                  <button className="close" onClick={toggleIsModalOpen}>Close</button>
+                </div>
+              ) : null
+        }
       </div>
     </StyledModal>
   )
-  // }
 }
 
 export default Modal
