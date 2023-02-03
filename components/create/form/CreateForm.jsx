@@ -1,17 +1,34 @@
 import StyledForm from './createForm.styled'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import algosdk from 'algosdk';
 import { NFTStorage, Blob } from 'nft.storage';
 import MyAlgoConnect from '@randlabs/myalgo-connect';
 import { useAsync } from '../../../hooks'
+import { HiOutlineCheckCircle, HiOutlineXCircle } from 'react-icons/hi'
+import Modal from '../../../utils/Modal';
+import Loader from '../../../utils/Loader';
+import { useToggle } from '../../../hooks';
 
 export const CreateForm = () => {
+    //UseState
     const [name, setName] = useState('');
     const [media, setMedia] = useState(null);
     const [file, setFile] = useState(null);
     const [unit_Name, setUnitName] = useState('');
     const [description, setDescription] = useState('');
     const [url, setUrl] = useState('');
+    const [txnResponse, setTxnResponse] = useState({
+        assetID: '',
+        txID: ''
+    })
+    const [addr, setAddr] = useState('')
+    useEffect(() => {
+        if (localStorage.getItem('address')) {
+            setAddr(localStorage.getItem('address'))
+        }
+    }, [])
+    //UseToggle
+    const [isModalOpen, toggleIsModalOpen] = useToggle();
 
     const handleChange = (e) => {
         if (e.target.files) {
@@ -36,8 +53,7 @@ export const CreateForm = () => {
     }
 
     //Mint NFT 
-    async function handleNftMint(e) {
-        e.preventDefault()
+    async function handleNftMint() {
         const myAlgoWallet = new MyAlgoConnect();
         //Client Parameters
         const token =
@@ -47,7 +63,7 @@ export const CreateForm = () => {
         //Init Client
         let algodClient = new algosdk.Algodv2(token, server, port);
         //NFT
-        let address = JSON.parse(localStorage.getItem('address'));
+        let address = addr;
         let params = await algodClient.getTransactionParams().do();
         var enc = new TextEncoder();
         let note = enc.encode(JSON.stringify({
@@ -89,7 +105,10 @@ export const CreateForm = () => {
         // Get the new asset's information from the creator account
         let ptx = await algosdk.waitForConfirmation(algodClient, response.txId, 4)
         assetID = ptx["asset-index"];
-        alert(`Asset: ${assetID} has been created`)
+        setTxnResponse({
+            assetID: assetID,
+            txID: response.txId
+        })
         setName('')
         setMedia(null)
         setFile(null)
@@ -99,28 +118,57 @@ export const CreateForm = () => {
     }
 
     //useAsync
-    const { execute, status, value, error } = useAsync(handleNftMint, false)
+    const { execute, status } = useAsync(handleNftMint, false)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        toggleIsModalOpen();
+        await execute();
+        return 'Nft Minted!'
+    }
     return (
-        <StyledForm onSubmit={handleNftMint}>
-            <h1
-                style={{ fontSize: '3rem', marginBottom: '2rem' }}>
-                Mint NFTS the easy way</h1>
-            {/* Name */}
-            <label htmlFor="nft-name">Name of NFT</label>
-            <input type="text" id="nft-name" placeholder='Ex: SMC #1' value={name} onChange={(e) => setName(e.target.value)} required={true} />
-            {/* Media */}
-            <label htmlFor="media">Media</label>
-            <input type="file" id="media" onChange={handleChange} required={true} />
-            {/* Unit-name */}
-            <label htmlFor="unit-name">Unit Name</label>
-            <input type="text" id="unit-name" placeholder='(Optional) Ex: SMC#001' value={unit_Name} onChange={(e) => setUnitName(e.target.value)} />
-            {/* Descripton */}
-            <label htmlFor="description">Description</label>
-            <input type="text" id="description" placeholder='(Optional) Ex: Dapper Cat' value={description} onChange={(e) => setDescription(e.target.value)} />
-            {/* URL */}
-            <label htmlFor="url">External URL</label>
-            <input type="text" id="url" placeholder='(Optional) Ex: yourwebsite.com' value={url} onChange={(e) => setUrl(e.target.value)} />
-            <input type="submit" value="Mint" />
-        </StyledForm>
+        <>
+            {
+                addr === '' ?
+                    (
+                        <h1 style={{ margin: '1rem', fontSize: '3rem' }}>Please Connect your wallet</h1>
+                    ) :
+                    (
+                        <>
+                            <StyledForm onSubmit={handleSubmit}>
+                                <h1
+                                    style={{ fontSize: '3rem', marginBottom: '2rem' }}>
+                                    Mint NFTS the easy way</h1>
+                                {/* Name */}
+                                <label htmlFor="nft-name">Name of NFT</label>
+                                <input type="text" id="nft-name" placeholder='Ex: SMC #1' value={name} onChange={(e) => setName(e.target.value)} required />
+                                {/* Media */}
+                                <label htmlFor="media">Media</label>
+                                <input type="file" id="media" onChange={handleChange} required />
+                                {/* Unit-name */}
+                                <label htmlFor="unit-name">Unit Name</label>
+                                <input type="text" id="unit-name" placeholder='(Optional) Ex: SMC#001' value={unit_Name} onChange={(e) => setUnitName(e.target.value)} />
+                                {/* Descripton */}
+                                <label htmlFor="description">Description</label>
+                                <input type="text" id="description" placeholder='(Optional) Ex: Dapper Cat' value={description} onChange={(e) => setDescription(e.target.value)} />
+                                {/* URL */}
+                                <label htmlFor="url">External URL</label>
+                                <input type="text" id="url" placeholder='(Optional) Ex: yourwebsite.com' value={url} onChange={(e) => setUrl(e.target.value)} />
+                                {/* Submit */}
+                                <input type="submit" value="Mint" disabled={name === '' || file === null || status === "pending"} />
+                            </StyledForm>
+                            <Modal
+                                icon={status === "pending" ? (<Loader />) : status === 'success' ? (<HiOutlineCheckCircle />) : status === 'error' ? (<HiOutlineXCircle />) : null}
+                                tx={txnResponse.txID}
+                                status={status}
+                                isModalOpen={isModalOpen}
+                                toggleIsModalOpen={toggleIsModalOpen}>
+                                {
+                                    status === "pending" ? 'Minting in Progress...' : status === 'success' ? `Asset: ${txnResponse.assetID} has been minted` : status === 'error' ? 'An Error has occured' : null
+                                }
+                            </Modal>
+                        </>
+                    )
+            }
+        </>
     )
 }

@@ -19,6 +19,9 @@ const StyledForm = styled.form`
     }
     &[type="submit"] {
       background-color: #9788ee;
+      &:hover {
+        background-color: #84caff;
+      }
     }
   }
   label {
