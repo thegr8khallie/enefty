@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const StyledLoader = styled.div`
     svg {
-        width: 12rem;
+        width: 8rem;
         height: 12rem;
         animation: spin 1s linear infinite;
     }
