@@ -68,7 +68,7 @@ export const ModifyForm = () => {
             <input type="text" id="description" placeholder="Edit Asset description" value={description} onChange={(e) => setDescription(e.target.value)} />
             <label htmlFor="url">External URL</label>
             <input type="text" id="url" placeholder="Edit Asset description" value={url} onChange={(e) => setUrl(e.target.value)} />
-            <input type="submit" value="Modify" />
+            <input type="submit" value="Modify" disabled={assetID === ''} />
         </StyledModifyForm>
     )
 }
