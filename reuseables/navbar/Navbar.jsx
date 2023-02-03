@@ -7,7 +7,7 @@ export const Navbar = () => {
     const [addr, setAddr] = useState('')
     useEffect(() => {
         if (localStorage.getItem('address')) {
-            setAddr(JSON.parse(localStorage.getItem('address')))
+            setAddr(localStorage.getItem('address'))
         }
     }, [])
 
