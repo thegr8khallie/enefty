@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Enefty: An NFT Tooling software for Algorand NFTs
 
-## Getting Started
+Enefty is a simpple GUI tool for minting new NFTs the conform to the ARC69 standard for Algorand NFTs and also, for modifying the metadata of existing NFTs. After minting, the new digital asset will be sent directly to the wallet connected to the tool. This project was built using NextJS: a framework built on react, styled components for styling, the MyAlgo Wallet SDK for signing transactions, NFT.Storage for IPFS hosting and the Javascript Algorand SDK. At the moment, this tool is only available on the Algorand testnet.
 
-First, run the development server:
+## Running this tool
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+There are two ways to use this tool;
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. ### On your Local Machine
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Clone this machine to repository to your local machine using:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+> git clone https://github.com/thegr8khallie/enefty
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Cd into the project directory and run:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+> npm start
+>
+> > Runs the app in the development mode.\
+> > Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Learn More
+2. ### On the web
 
-To learn more about Next.js, take a look at the following resources:
+Use this tool live on the web [here](https://enefty.netlify.app)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How to use
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Firstly, connect your wallet by clicking on the "Connect MyAlgo Wallet" button at the top right corner of the screen.
 
-## Deploy on Vercel
+2. In order to mint an NFT, click on the "Create" button on the sidebar and provide the required metadata for your NFT and then submit the form. After the confirmation message that the asset has been minted, you can check your myAlgo Wallet for your NFT.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. In order to modify the metadata of an existing NFT, click on the "Modify" button on the sidebar, fill out the form and submit, just like it is stated above. However, make sure that the NFT to be modified is owned by you I.e has the address connected to the webapp as the manager address of the NFT asset.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Live Demo
+
+The live Demo can be found on [Youtube](https://youtu.be/lAWD5LgHiZg)
