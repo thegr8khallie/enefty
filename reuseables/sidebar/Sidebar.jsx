@@ -22,11 +22,6 @@ export const Sidebar = () => {
             icon: HiOutlineAdjustments
         },
         {
-            to: '/nfts',
-            text: 'NFT Archive',
-            icon: HiOutlineArchive
-        },
-        {
             to: '/docs',
             text: 'How to Use',
             icon: HiOutlineBookOpen
@@ -41,10 +36,17 @@ export const Sidebar = () => {
                 </li>
                 {navElements.map((i, j) => (
                     <li key={`element${j}`}>
-                        <Link href={i.to}>
-                            {<i.icon />}
-                            <p style={{ fontSize: '1rem' }}>{i.text}</p>
-                        </Link>
+                        {
+                            i.to === '/docs' ? (<a href="http://" target="_blank" rel="noopener noreferrer">
+                                {<i.icon />}
+                                <p style={{ fontSize: '1rem' }}>{i.text}</p>
+                            </a>)
+                                :
+                                (<Link href={i.to}>
+                                    {<i.icon />}
+                                    <p style={{ fontSize: '1rem' }}>{i.text}</p>
+                                </Link>)
+                        }
                     </li>
                 ))}
             </ul>
