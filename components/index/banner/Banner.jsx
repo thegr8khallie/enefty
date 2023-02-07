@@ -16,7 +16,6 @@ export const Banner = () => {
                 <h1>Create digital assets on the Algorand blockchain</h1>
                 <div>
                     <Link href='/create'><button>Get Started</button></Link>
-                    <button>How to use</button>
                 </div>
             </section>
         </StyledBanner>

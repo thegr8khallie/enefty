@@ -37,7 +37,7 @@ export const Sidebar = () => {
                 {navElements.map((i, j) => (
                     <li key={`element${j}`}>
                         {
-                            i.to === '/docs' ? (<a href="http://" target="_blank" rel="noopener noreferrer">
+                            i.to === '/docs' ? (<a href="https://github.com/thegr8khallie/enefty/blob/main/README.md" target="_blank" rel="noopener noreferrer">
                                 {<i.icon />}
                                 <p style={{ fontSize: '1rem' }}>{i.text}</p>
                             </a>)
